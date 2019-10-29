@@ -15,7 +15,7 @@ boundingRect(src) -> x, y, w, h
 #指定一个轮廓生成包围矩形
 #e.g.
 for c in contours
-	x,y,w,h = cv2.boundingRect(c)
-	cv2.rectangle(img, (x,y), (x+w,y+h), (0,0,255), 2)
+    x,y,w,h = cv2.boundingRect(c)
+    cv2.rectangle(img, (x,y), (x+w,y+h), (0,0,255), 2)
 
 rectangle
