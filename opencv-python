@@ -2,12 +2,19 @@ version opencv3 + python3.5
 version opencv-python 4.1.1.26
 
 findContours(srcImage.copy(), cv2.RETE_TREE, cv2.CHAIN_APPROX_SIMPLE) -> image, contours, hierarchy
-#src为灰度二值图像，此函数会改变原图像，RETE_TREE整体层次结构（RETE_EXTERNAL仅外部轮廓），
+#src为灰度二值图像，单通道，此函数会改变原图像，RETE_TREE整体层次结构（RETE_EXTERNAL仅外部轮廓），SIMPLE为生成contours仅保存轮廓拐点，CHAIN_APPROX_NONE保存全部
 #image->修改后图像, contours->轮廓list(np.narray), hierarchy->层次
 #e.g.
 contours = cv2.findContours(img.copy(), cv2.RETE_TREE, cv2.CHAIN_APPROX_SIMPLE)[-2]
 dstImg = cv2.drawContours(img, contours, -1, (0,0,255), 1)
 
-cv2.drawContours(srcImage, contours, -1, (B,G,R), lineWidth) -> image
+drawContours(srcImage, contours, -1, (B,G,R), lineWidth) -> image
 #-1表示绘制全部图像, lineWidth线宽
+
+boundingRect(src) -> x, y, w, h
+#指定一个轮廓生成包围矩形
+#e.g.
+for c in contours
+	x,y,w,h = cv2.boundingRect(c)
+	cv2.rectangle(img, (x,y), (x+w,y+h), (0,0,255), 2)
 
