@@ -2,7 +2,7 @@ version opencv3 + python3.5
 version opencv-python 4.1.1.26
 
 findContours(srcImage.copy(), cv2.RETE_TREE, cv2.CHAIN_APPROX_SIMPLE) -> image, contours, hierarchy
-#此函数会改变原图像，RETE_TREE整体层次结构（RETE_EXTERNAL仅外部轮廓），
+#src为灰度二值图像，此函数会改变原图像，RETE_TREE整体层次结构（RETE_EXTERNAL仅外部轮廓），
 #image->修改后图像, contours->轮廓list(np.narray), hierarchy->层次
 #e.g.
 contours = cv2.findContours(img.copy(), cv2.RETE_TREE, cv2.CHAIN_APPROX_SIMPLE)[-2]
