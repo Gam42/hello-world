@@ -19,10 +19,20 @@ for c in contours
     cv2.rectangle(img, (x,y), (x+w,y+h), (0,0,255), 2)
 
 minEnclosingCircle(contour) -> (x,y), radius
+#最小闭合圆
 #输出均为小数
 
 circle(src, (centerX,centerY), radius, (G,B,R), width)
 #注意圆心半径均要转成int
+
+minAreaRect(contour) -> rect
+boxPoints(rect) -> box
+#计算某个轮廓最小矩形，再转成轮廓数据
+#e.g.
+rect = cv2.minAreaRect(contour)
+box = cv2.boxPoints(rect)
+box = np.int0(box)#np.int0 is np.int64
+cv2.drawContours(image, [box], -1, (255,0,0), 1)
 
 max(src, key=func) -> dst
 #将srcList带入func运算，得到dstList，注意：返回dstList最大值项对应的srcList项
@@ -34,5 +44,14 @@ srcList = [1,2,3,4,5,6]
 max(srcList, key=func)
 #print: 1
 
+inRange(image, lower, upper) -> mask
+#mask为单通道二值0 or 255
+#e.g.
+mask = cv2.inRange(image, [130,50,50], [150,255,255])
 
-
+erode(image, kernel, iteration = ?) -> dstImage
+dilate(image, kernel, iteration = ?) -> dstImage
+#腐蚀 & 膨胀
+#e.g.
+mask = cv2.erode(image, None, iteration = 2)
+mask = cv2.dilate(image, None, iteration = 2)
