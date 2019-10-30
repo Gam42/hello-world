@@ -55,3 +55,15 @@ dilate(image, kernel, iteration = ?) -> dstImage
 #e.g.
 mask = cv2.erode(image, None, iteration = 2)
 mask = cv2.dilate(image, None, iteration = 2)
+
+createTrackbar('name', 'window', valueLow, valueUp, callbackFunc)
+getTrackbarPos('name', 'window') -> valueNow
+#e.g.
+def callbackFunc(x):
+    pass
+cv2.namedWindow('image')
+cv2.createTrackbar('para1', 'image', 0, 255, callbackFunc)
+while True:
+    para1 = cv2.getTrackbarPos('para1', 'image')
+    ...
+
